@@ -30,7 +30,8 @@ Page loaded at <?php echo time() ?>
 <script type="text/javascript">
 	
 	var p = new Ping();
-	var pingRepeater;
+	var pinger;
+	var pingerDelay = 1000;
 
 	function ping(statusCallback) {
 		p.ping('./', function(err, data) {
@@ -51,13 +52,13 @@ Page loaded at <?php echo time() ?>
 	}
 
 	function startPinging() {
-		pingRepeater = setInterval(function(){
+		pinger = setInterval(function(){
 			ping(updatePingStatus);
-		}, 1000);
+		}, pingerDelay);
 	}
 
 	function stopPinging() {
-		clearInterval(pingRepeater);	
+		clearInterval(pinger);	
 	}
 
 	console.log("You can use startPinging() and stopPinging() to pause live checks.")
