@@ -30,21 +30,37 @@ Page loaded at <?php echo time() ?>
 <script type="text/javascript">
 	
 	var p = new Ping();
+	var pingRepeater;
 
-	function refreshLatency() {
+	function refreshLatency(statusCallback) {
 		p.ping('./', function(err, data) {
 		  // Also display error if err is returned.
+		  var msg;
 		  if (err) {
 		    console.log("error loading resource")
-		    data = "Ping failed (" + err + ")";
+		    msg = "Ping failed (" + err + ")";
 		  } else {
-		  	data = "Ping is " + data + " ms";
+		  	msg = "Ping is " + data + " ms";
 		  }
-		  document.getElementById("ping-status").innerHTML = data;
-		});		
+		  statusCallback(msg);
+		});
 	}
 
-	var refresher = setInterval(refreshLatency, 1000);
+	function updatePingStatus(msg) {
+		document.getElementById("ping-status").innerHTML = msg;		
+	}
+
+	function startPinging() {
+		pingRepeater = setInterval(function(){
+			refreshLatency(updatePingStatus);
+		}, 1000);
+	}
+
+	function stopPinging() {
+		clearInterval(pingRepeater);	
+	}
+
+	startPinging();
 
 </script>
 
