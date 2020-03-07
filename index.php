@@ -32,7 +32,7 @@ Page loaded at <?php echo time() ?>
 	var p = new Ping();
 	var pingRepeater;
 
-	function refreshLatency(statusCallback) {
+	function ping(statusCallback) {
 		p.ping('./', function(err, data) {
 		  // Also display error if err is returned.
 		  var msg;
@@ -52,7 +52,7 @@ Page loaded at <?php echo time() ?>
 
 	function startPinging() {
 		pingRepeater = setInterval(function(){
-			refreshLatency(updatePingStatus);
+			ping(updatePingStatus);
 		}, 1000);
 	}
 
