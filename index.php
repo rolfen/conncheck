@@ -30,8 +30,7 @@ Page loaded at <?php echo time() ?>
 <script type="text/javascript">
 	
 	var p = new Ping();
-	var pinger;
-	var pingerDelay = 1000;
+	var pinger = false;
 
 	function ping(statusCallback) {
 		p.ping('./', function(err, data) {
@@ -51,18 +50,23 @@ Page loaded at <?php echo time() ?>
 		document.getElementById("ping-status").innerHTML = msg;		
 	}
 
-	function startPinging() {
-		pinger = setInterval(function(){
-			ping(updatePingStatus);
-		}, pingerDelay);
+	function startPinger(pingerInterval) {
+		if(pinger) {
+			throw "Cannot start pinger, it is already running";
+		} else {
+			pinger = setInterval(function(){
+				ping(updatePingStatus);
+			}, pingerInterval);
+		}
 	}
 
-	function stopPinging() {
-		clearInterval(pinger);	
+	function stopPinger() {
+		clearInterval(pinger);
+		pinger = false;	
 	}
 
-	console.log("You can use startPinging() and stopPinging() to pause live checks.")
-	startPinging();
+	console.log("Tip: startPinger(interval) and stopPinger()")
+	startPinger(1000);
 
 </script>
 
