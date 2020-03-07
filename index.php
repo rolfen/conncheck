@@ -25,41 +25,10 @@ pre {
 
 You: <?php echo $_SERVER['REMOTE_ADDR'] ?> 
 Time: <?php echo time() ?> 
-<!--
-Questions? Write to spamhole@eebe.be 
-Please include the word "AMHUMAN" in the email subject, otherwise I won't see it!
--->
+
 </pre>
 
-<?php if(isset($_GET['autoRefresh']) and !empty($_GET['autoRefresh'])) { ?>
 
-<a href="?autoRefresh">Stop autorefresh</a>
-
-<script>
-'use strict';
-
-var autoRefreshParameter = "<?php echo $_GET['autoRefresh'] ?>";
-var defaultTimeout = 3000;
-var minimumTimeout = 1000;
-
-if(isNaN(autoRefreshParameter)) {
-	var timeout = defaultTimeout;
-} else {
-	var timeout = (parseInt(autoRefreshParameter) * 1000);
-	timeout = Math.max(timeout, minimumTimeout);
-}
-
-setTimeout(function(){
-	location.reload();
-}, timeout);
-
-</script>
-
-<?php } else { ?>
-
-<a href="?autoRefresh=2">Automatically refresh this page</a>
-
-<?php } ?>
 
 </body>
 </html>
