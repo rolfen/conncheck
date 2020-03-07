@@ -5,6 +5,9 @@ header("Expires: 0"); // Proxies.
 <html>
 <head>
 <meta name="viewport" content="width=device-width">
+
+<script src="node_modules/ping.js/dist/ping.min.js" type="text/javascript"></script>
+
 <style>
 body {
 	font-family: monospace;
