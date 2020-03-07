@@ -20,15 +20,12 @@ pre {
 </style>
 </head>
 <body>
-<h1>Hi!</h1>
+<h1>Hi</h1>
 <pre>
+Your IP is <?php echo $_SERVER['REMOTE_ADDR'] ?> 
+Page loaded at <?php echo time() ?> 
 
-You: <?php echo $_SERVER['REMOTE_ADDR'] ?> 
-Time: <?php echo time() ?> 
-
-</pre>
-
-<p>Response latency for this page (ms): <span id="ping-latency">...</span></p>
+<span id="ping-status">Initializing ping</span>
 
 <script type="text/javascript">
 	
@@ -39,9 +36,11 @@ Time: <?php echo time() ?>
 		  // Also display error if err is returned.
 		  if (err) {
 		    console.log("error loading resource")
-		    data = data + " " + err;
+		    data = "Ping failed (" + err + ")";
+		  } else {
+		  	data = "Ping is " + data + " ms";
 		  }
-		  document.getElementById("ping-latency").innerHTML = data;
+		  document.getElementById("ping-status").innerHTML = data;
 		});		
 	}
 
