@@ -28,7 +28,26 @@ Time: <?php echo time() ?>
 
 </pre>
 
+<p>Response latency for this page (ms): <span id="ping-latency">...</span></p>
 
+<script type="text/javascript">
+	
+	var p = new Ping();
+
+	function refreshLatency() {
+		p.ping('./', function(err, data) {
+		  // Also display error if err is returned.
+		  if (err) {
+		    console.log("error loading resource")
+		    data = data + " " + err;
+		  }
+		  document.getElementById("ping-latency").innerHTML = data;
+		});		
+	}
+
+	var refresher = setInterval(refreshLatency, 1000);
+
+</script>
 
 </body>
 </html>
