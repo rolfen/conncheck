@@ -60,6 +60,7 @@ Page loaded at <?php echo time() ?>
 		clearInterval(pingRepeater);	
 	}
 
+	console.log("You can use startPinging() and stopPinging() to pause live checks.")
 	startPinging();
 
 </script>
