@@ -7,6 +7,8 @@ header("Expires: 0"); // Proxies.
 <meta name="viewport" content="width=device-width">
 
 <script src="node_modules/ping.js/dist/ping.min.js" type="text/javascript"></script>
+<script src="node_modules/asciichart/asciichart.js" type="text/javascript"></script>
+
 
 <style>
 body {
@@ -28,6 +30,9 @@ pre {
 	font-weight:bold;
 	cursor: pointer;
 }
+#ping-status {
+	white-space: pre;
+}
 </style>
 </head>
 <body>
@@ -40,13 +45,15 @@ Page loaded at <?php echo time() ?>
 
 <p><span class="btn" onclick="togglePinging()">Toggle Ping</span></p>
 
-<p id="ping-status">Pull out your console</p>
+<pre id="ping-status">Pull out your console</pre>
 
 <script type="text/javascript">
 
 	var p = new Ping();
+
 	var pingRepeater;
 	var pingStatusMessage;
+	var latencyHistory = [];
 
 	function ping(statusCallback) {
 		p.ping('./', function(err, data) {
@@ -55,10 +62,21 @@ Page loaded at <?php echo time() ?>
 		    console.log("error loading resource")
 		    pingStatusMessage = "Ping failed (" + err + ")";
 		  } else {
-		  	pingStatusMessage  = "Ping is " + data + " ms";
+		  	newResponse(data);
+		  	pingStatusMessage  = asciichart.plot(latencyHistory, {
+		  		height: 7,
+		  		padding: '        '
+		  	});
 		  }
 		  statusCallback();
 		});
+	}
+
+	function newResponse(latency) {
+		latencyHistory.unshift(latency);
+		if(latencyHistory.length > 20) {
+			latencyHistory.pop();
+		}
 	}
 
 	function updatePingStatus() {
@@ -86,7 +104,8 @@ Page loaded at <?php echo time() ?>
 		}
 	}
 
-	console.log("You can use startPinging() and stopPinging() for live checks.")
+	console.log("You can use startPinging() and stopPinging() for live checks.");
+
 </script>
 
 </body>
