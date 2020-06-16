@@ -87,7 +87,6 @@ Page loaded at <?php echo time() ?>
 	}
 
 	console.log("You can use startPinging() and stopPinging() for live checks.")
-
 </script>
 
 </body>
