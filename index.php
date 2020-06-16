@@ -17,6 +17,17 @@ body {
 pre {
 	white-space: pre-wrap;
 }
+.btn {
+	display: inline-block;
+	min-width: 1em;
+	min-height: 1em;
+	box-sizing: border-box;
+	padding:.33em;
+	color:white;
+	background-color:black;
+	font-weight:bold;
+	cursor: pointer;
+}
 </style>
 </head>
 <body>
@@ -25,43 +36,57 @@ pre {
 Your IP is <?php echo $_SERVER['REMOTE_ADDR'] ?> 
 Page loaded at <?php echo time() ?> 
 
-<span id="ping-status">Initializing ping</span>
+</pre>
+
+<p><span class="btn" onclick="togglePinging()">Toggle Ping</span></p>
+
+<p id="ping-status">Pull out your console</p>
 
 <script type="text/javascript">
-	
+
 	var p = new Ping();
 	var pingRepeater;
+	var pingStatusMessage;
 
 	function ping(statusCallback) {
 		p.ping('./', function(err, data) {
 		  // Also display error if err is returned.
-		  var msg;
 		  if (err) {
 		    console.log("error loading resource")
-		    msg = "Ping failed (" + err + ")";
+		    pingStatusMessage = "Ping failed (" + err + ")";
 		  } else {
-		  	msg = "Ping is " + data + " ms";
+		  	pingStatusMessage  = "Ping is " + data + " ms";
 		  }
-		  statusCallback(msg);
+		  statusCallback();
 		});
 	}
 
-	function updatePingStatus(msg) {
-		document.getElementById("ping-status").innerHTML = msg;		
+	function updatePingStatus() {
+		document.getElementById("ping-status").innerHTML = pingStatusMessage;
 	}
 
 	function startPinging() {
+		pingStatusMessage = "init";
+		updatePingStatus();
 		pingRepeater = setInterval(function(){
 			ping(updatePingStatus);
 		}, 1000);
 	}
 
 	function stopPinging() {
-		clearInterval(pingRepeater);	
+		clearInterval(pingRepeater);
+		pingRepeater = false;
 	}
 
-	console.log("You can use startPinging() and stopPinging() to pause live checks.")
-	startPinging();
+	function togglePinging() {
+		if(pingRepeater) {
+			stopPinging();
+		} else {
+			startPinging();
+		}
+	}
+
+	console.log("You can use startPinging() and stopPinging() for live checks.")
 
 </script>
 
