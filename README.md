@@ -18,7 +18,7 @@ npm install
 
 ## Sample Output
 
-This is a rough idea of what you get. The real output will have some formatting and styling added. `Toggle Ping` would be a button to start / stop pinging. The ASCII graph would shouw the latency in milliseconds and would be updated every second.
+This is a rough idea of what you get. The real output will have some formatting and styling added. `Toggle Ping` would be a button to start / stop pinging. The ASCII graph would indicate latency in milliseconds and would be updated every second.
 
 ```
 Hi
