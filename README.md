@@ -1,16 +1,16 @@
 # Conncheck
 
-A web page for checking your connectivity in the browser.
+A web page for checking connectivity in the browser.
 
 ## Requirements
 
-PHP is required, only for displaying your IP and timestamp, you could easily remove that from the source and rename the file to `.html` if you want to serve the page without PHP.
+PHP is required, only for displaying the client IP and timestamp. You could easily remove this functionality from the source code and change the file extension to `html` to serve the page without PHP.
 
-Node.js is required for Javascript dependencies (see below).
+Node.js is required for Javascript dependencies (please see below).
 
 ## Installing
 
-Upload it to your www folder on your server, then run the following to install javascript dependencies:
+Upload it to the www folder, then run the following to install javascript dependencies:
 
 ```
 npm install
