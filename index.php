@@ -30,7 +30,7 @@ pre {
 	font-weight:bold;
 	cursor: pointer;
 }
-#ping-status {
+#ping-result {
 	white-space: pre;
 }
 </style>
@@ -45,6 +45,9 @@ Page loaded at <?php echo time() ?>
 
 <p><span class="btn" onclick="togglePinging()">Toggle Ping</span></p>
 
+
+<pre id="ping-result"></pre>
+
 <pre id="ping-status">Pull out your console</pre>
 
 <script type="text/javascript">
@@ -52,48 +55,62 @@ Page loaded at <?php echo time() ?>
 	var p = new Ping();
 
 	var pingRepeater;
+	var pingResultMessage;
 	var pingStatusMessage;
+	var pingResultEl = document.getElementById("ping-result");
+	var pingStatusEl = document.getElementById("ping-status");
 	var latencyHistory = [];
 
-	function ping(statusCallback) {
-		p.ping('./', function(err, data) {
-		  // Also display error if err is returned.
-		  if (err) {
-		    console.log("error loading resource")
-		    pingStatusMessage = "Ping failed (" + err + ")";
-		  } else {
-		  	newResponse(data);
-		  	pingStatusMessage  = asciichart.plot(latencyHistory, {
-		  		height: 7,
-		  		padding: '        '
-		  	});
-		  }
-		  statusCallback();
-		});
+	function pingCallback(err, data) {
+		if (err) {
+			console.log("error loading resource")
+			pingStatusMessage = "Ping failed (" + err + ")";
+			updatePingStatus();
+		} else {
+			newResponse(data);
+		}
 	}
 
 	function newResponse(latency) {
+		// record response
 		latencyHistory.unshift(latency);
 		if(latencyHistory.length > 20) {
 			latencyHistory.pop();
 		}
+
+		// display results
+	  	pingResultMessage  = asciichart.plot(latencyHistory, {
+	  		height: 7,
+	  		padding: '        '
+	  	});
+	  	updatePingResult();
+
+		// Since we are getting a response, assume all OK and clear any error
+		pingStatusMessage = "";
+		updatePingStatus(); 
+	}
+
+	function updatePingResult() {
+		pingResultEl.innerHTML = pingResultMessage;
 	}
 
 	function updatePingStatus() {
-		document.getElementById("ping-status").innerHTML = pingStatusMessage;
+		pingStatusEl.innerHTML = pingStatusMessage;
 	}
 
 	function startPinging() {
-		pingStatusMessage = "init";
+		pingStatusMessage = "Starting";
 		updatePingStatus();
 		pingRepeater = setInterval(function(){
-			ping(updatePingStatus);
+			p.ping('./', pingCallback);
 		}, 1000);
 	}
 
 	function stopPinging() {
 		clearInterval(pingRepeater);
 		pingRepeater = false;
+		pingStatusMessage = "Paused";
+		updatePingStatus();
 	}
 
 	function togglePinging() {
