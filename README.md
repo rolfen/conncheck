@@ -4,7 +4,9 @@ A web page for checking your connectivity in the browser.
 
 ## Requirements
 
-PHP is required, only for displaying your IP, you could easily remove that and rename the file to `.html` if you want.
+PHP is required, only for displaying your IP and timestamp, you could easily remove that from the source and rename the file to `.html` if you want to serve the page without PHP.
+
+Node.js is required for Javascript dependencies (see below).
 
 ## Installing
 
@@ -13,9 +15,10 @@ Upload it to your www folder on your server, then run the following to install j
 ```
 npm install
 ```
+
 ## Sample Output
 
-This is a rough idea of what you get. `Toggle Ping` is a button to start / stop pinging. The ASCII graph shows the latency, it is updated every second.
+This is a rough idea of what you get. The real output will have some formatting and styling added. `Toggle Ping` would be a button to start / stop pinging. The ASCII graph would shouw the latency in milliseconds and would be updated every second.
 
 ```
 Hi
