@@ -4,7 +4,7 @@ A web page for checking connectivity in the browser.
 
 ## Requirements
 
-PHP is required, only for displaying the client IP and timestamp. You could easily remove this functionality from the source code and change the file extension to `html` to serve the page without PHP.
+PHP is required for displaying the client IP, timestamp and for writing no-cache headers. You could remove this functionality from the source code and change the file extension to `html` to serve the page without PHP.
 
 Node.js is required for Javascript dependencies (please see below).
 
