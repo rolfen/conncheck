@@ -25,6 +25,7 @@ pre {
 	min-width: 1em;
 	min-height: 1em;
 	border-radius: .22em;
+	border: 1px solid black;
 	box-sizing: border-box;
 	padding:.5em 1em .5em 1em;
 	color:white;
@@ -32,6 +33,7 @@ pre {
 	font-weight:bold;
 	cursor: pointer;
 }
+
 #ping-result {
 	white-space: pre;
 }
