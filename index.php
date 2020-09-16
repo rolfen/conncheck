@@ -4,6 +4,7 @@ header("Expires: 0"); // Proxies.
 ?>
 <html>
 <head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 
 <script src="node_modules/ping.js/dist/ping.min.js" type="text/javascript"></script>
@@ -23,8 +24,9 @@ pre {
 	display: inline-block;
 	min-width: 1em;
 	min-height: 1em;
+	border-radius: .22em;
 	box-sizing: border-box;
-	padding:.33em;
+	padding:.5em 1em .5em 1em;
 	color:white;
 	background-color:black;
 	font-weight:bold;
@@ -40,7 +42,6 @@ pre {
 <pre>
 Your IP is <?php echo $_SERVER['REMOTE_ADDR'] ?> 
 Page loaded at <?php echo time() ?> 
-
 </pre>
 
 <p><span class="btn" onclick="togglePinging()">Toggle Ping</span></p>
