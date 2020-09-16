@@ -44,12 +44,12 @@ Your IP is <?php echo $_SERVER['REMOTE_ADDR'] ?>
 Page loaded at <?php echo time() ?> 
 </pre>
 
-<p><span class="btn" onclick="togglePinging()">Toggle Ping</span></p>
+<p><span class="btn" onclick="togglePinging()">Toggle pinger</span></p>
 
 
 <pre id="ping-result"></pre>
 
-<pre id="ping-status">Pull out your console</pre>
+<pre id="ping-status"></pre>
 
 <script type="text/javascript">
 
