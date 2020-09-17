@@ -28,7 +28,7 @@ pre {
 	border-radius: .22em;
 	border: 1px solid black;
 	box-sizing: border-box;
-	padding:.25em .5em .25em .5em;
+	padding:.33em .66em .33em .66em;
 	color:white;
 	text-decoration: none;
 	background-color:black;
