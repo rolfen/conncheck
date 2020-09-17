@@ -4,6 +4,7 @@ header("Expires: 0"); // Proxies.
 ?>
 <html>
 <head>
+<title>ping</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 
@@ -27,8 +28,9 @@ pre {
 	border-radius: .22em;
 	border: 1px solid black;
 	box-sizing: border-box;
-	padding:.5em 1em .5em 1em;
+	padding:.25em .5em .25em .5em;
 	color:white;
+	text-decoration: none;
 	background-color:black;
 	font-weight:bold;
 	cursor: pointer;
@@ -40,13 +42,15 @@ pre {
 </style>
 </head>
 <body>
-<h1>Hi</h1>
 <pre>
-Your IP is <?php echo $_SERVER['REMOTE_ADDR'] ?> 
-Page loaded at <?php echo time() ?> 
+Page loaded on <?php echo time() ?> 
+Client IP is <?php echo $_SERVER['REMOTE_ADDR'] ?> 
+
 </pre>
 
-<p><span class="btn" onclick="togglePinging()">Toggle pinger</span></p>
+<p>
+<span class="btn" onclick="togglePinging()">Ping ⏸▶️ </span>
+</p>
 
 
 <pre id="ping-result"></pre>
