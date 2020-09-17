@@ -49,7 +49,7 @@ Client IP is <?php echo $_SERVER['REMOTE_ADDR'] ?>
 </pre>
 
 <p>
-<span class="btn" onclick="togglePinging()">Ping ⏸▶️ </span>
+<span class="btn" onclick="togglePinging()">Ping &#9199;</span>
 </p>
 
 
