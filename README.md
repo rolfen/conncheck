@@ -1,6 +1,8 @@
 # Conncheck
 
-A web page for checking connectivity in the browser.
+A web page for checking connectivity status from inside your browser.
+
+It includes a live HTTP ping.
 
 ## Requirements
 
@@ -18,11 +20,9 @@ npm install
 
 ## Sample Output
 
-This is a rough idea of what you get. The real output will have some formatting and styling added. `Toggle Ping` would be a button to start / stop pinging. The ASCII graph would indicate latency in milliseconds and would be updated every second.
+This is an approximative idea of what you get. `Toggle Ping` would be a button to start / stop pinging. The ASCII graph would indicate latency in milliseconds and would be updated every second.
 
 ```
-Hi
-
 Your IP is 118.112.86.81
 Page loaded at 1592321180 
 
