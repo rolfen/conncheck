@@ -4,7 +4,7 @@
 
 A web page for checking connectivity status from inside your browser.
 
-It includes a live HTTP ping.
+It includes a live HTTP ping graph.
 
 ## Requirements
 
