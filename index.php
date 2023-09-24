@@ -71,8 +71,10 @@ pre {
 <body>
 	<div>
 		<pre>
-<!-- -->Page loaded on <?php echo time() ?> 
-<!-- -->Client IP is <?php echo $_SERVER['REMOTE_ADDR'] ?>
+		<!-- <?php echo  "-->" ?>
+<!--		-->Page loaded on <?php echo time() ?> 
+<!--		-->Client IP is <?php echo $_SERVER['REMOTE_ADDR'] ?>
+		<?php echo  "<!--" ?> -->
 		</pre>
 
 		<p>
