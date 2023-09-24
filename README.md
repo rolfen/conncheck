@@ -10,7 +10,7 @@ It includes a live HTTP ping graph.
 
 PHP is used for displaying the client IP, timestamp and for writing no-cache headers. 
 
-If you don't have PHP, simply remove the PHP code at the beginning of index.php and change the file extension from `php` to `html`.
+If you don't have PHP, please delete the PHP code (`<?php ... ?>`) at the beginning of `index.php` and change the file extension from `php` to `html`.
 
 Node.js is required for Javascript dependencies (please see below).
 
