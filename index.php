@@ -70,12 +70,12 @@ pre {
 </head>
 <body>
 	<div>
-		<pre>
 		<!-- <?php echo  "-->" ?>
-<!--		-->Page loaded on <?php echo time() ?> 
-<!--		-->Client IP is <?php echo $_SERVER['REMOTE_ADDR'] ?>
-		<?php echo  "<!--" ?> -->
+		<pre>
+Page loaded on <?php echo time() ?> 
+Client IP is <?php echo $_SERVER['REMOTE_ADDR'] ?>
 		</pre>
+		<?php echo  "<!--" ?> -->
 
 		<p>
 		<span class="btn" onclick="togglePinging()">Ping &#9199;</span>
